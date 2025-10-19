@@ -1,0 +1,183 @@
+/* ==========================================================
+   ОСНОВНІ СТИЛІ ТА ШРИФТИ (Застосовується до всієї сторінки)
+   ========================================================== */
+body {
+  /* Приклад стилів для body, якщо ви їх визначали */
+  font-family: 'Montserrat', sans-serif;
+  background-color: #fff; /* Білий фон */
+  color: #2e2f42;
+  margin: 0;
+  padding: 36px; /* Загальний відступ від країв */
+}
+
+/* ==========================================================
+   СТИЛІ ФОРМИ ТА LAYOUT
+   ========================================================== */
+.form {
+  width: 360px;
+  /* Flexbox для вертикального розміщення елементів */
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Відступ між секціями (Input, Fieldset, Button) */
+}
+
+/* LAYOUT: Label + Input (Delay section) */
+.form label {
+  display: flex;
+  flex-direction: column; /* Текст та інпут розташовані вертикально */
+  gap: 8px; /* Відступ між текстом "Delay (ms)" та самим інпутом */
+  font-size: 16px;
+  line-height: 1.5;
+  color: #2e2f42;
+}
+
+/* ==========================================================
+   СТИЛІ ПОЛЯ ВВЕДЕННЯ (INPUT TYPE="NUMBER")
+   ========================================================== */
+input[type='number'] {
+  /* Розмір та рамка */
+  border: 1px solid #808080;
+  border-radius: 4px;
+  width: 100%; /* Займає всю ширину .form (360px) */
+  height: 40px;
+  padding: 8px 16px;
+  box-sizing: border-box; /* Важливо: щоб padding не збільшував загальну ширину */
+  font-size: 16px;
+  line-height: 1.5;
+  color: #2e2f42;
+}
+
+input[type='number']:hover {
+  border-color: #000;
+}
+
+input[type='number']:focus,
+input[type='number']:active {
+  outline: none; /* Прибираємо стандартне обведення */
+  border-color: #4e75ff; /* Синя рамка при фокусі/активності */
+}
+
+/* ==========================================================
+   СТИЛІ ГРУПИ РАДІОКНОПОК (FIELDSET)
+   ========================================================== */
+fieldset {
+  /* Рамка та форма як у інпута */
+  border: 1px solid #808080;
+  border-radius: 4px;
+  padding: 8px 16px 8px 16px;
+  margin: 0;
+
+  /* Layout для Fulfilled та Rejected */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px; /* Відступ між двома радіокнопками */
+  height: 72px; /* Фіксована висота, як на зображенні */
+}
+
+legend {
+  /* Легенда State - розміщення поверх рамки */
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+  padding: 0 4px;
+  margin-left: -4px;
+}
+
+/* Стилі для загального вигляду радіо-опцій */
+fieldset label {
+  /* Скидаємо Flexbox від батьківської label і використовуємо для тексту/кастомного інпута */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0; /* Прибираємо gap 8px, щоб контролювати його через .custom-radio */
+  cursor: pointer;
+}
+
+/* ==========================================================
+   СТИЛІ КНОПКИ (BUTTON)
+   ========================================================== */
+button[type='submit'] {
+  /* Скидання стандартних стилів */
+  border: none;
+  outline: none;
+
+  /* Розмір та вигляд */
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 100%; /* Займає всю ширину форми */
+  height: 40px;
+
+  /* Колір */
+  background: #4e75ff;
+  color: #fff;
+  cursor: pointer;
+
+  /* Текст */
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5; /* У CSS використовується крапка, а не кома */
+  letter-spacing: 0.04em;
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button[type='submit']:hover {
+  background: #6c8cff;
+}
+
+/* ==========================================================
+   КАСТОМНІ РАДІОКНОПКИ (НЕОБХІДНИЙ HTML: <span class="custom-radio">)
+   ========================================================== */
+
+/* 1. Приховуємо стандартний радіо-інпут */
+fieldset label input[type='radio'] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+/* 2. Стилізуємо кастомний елемент */
+.custom-radio {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #2e2f42; /* Дефолтна рамка */
+  margin-right: 8px; /* Відступ між колом і текстом */
+  vertical-align: middle;
+  position: relative;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 3. Стан HOVER */
+.custom-radio:hover {
+  border-color: #000;
+}
+
+/* 4. Стан CHECKED (СТИЛЬ РАМКИ) */
+input[type='radio']:checked + .custom-radio {
+  border-color: #4e75ff; /* Синя рамка, коли вибрано */
+}
+
+/* 5. ВНУТРІШНЯ КРАПКА (СТИЛЬ ЗАПОВНЕННЯ) */
+input[type='radio']:checked + .custom-radio::after {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4e75ff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.custom-snackbar-succes .iziToast-message,
+.iziToast-title,
+.custom-snackbar-error .iziToast-message,
+.iziToast-title {
+  color: #fff !important;
+}
