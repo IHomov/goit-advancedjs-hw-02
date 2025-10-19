@@ -1,0 +1,102 @@
+/* ІНПУТ */
+#datetime-picker {
+  width: 272px;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid #808080;
+  padding: 0 8px;
+  transition: all 0.2s;
+  margin: 0 auto;
+}
+
+#datetime-picker:focus {
+  background: #fff;
+}
+
+#datetime-picker:disabled {
+  border: 1px solid #808080;
+  background: #f0f0f0;
+}
+
+#datetime-picker:hover {
+  border: 1px solid #000;
+}
+#datetime-picker:active {
+  border: 1px solid #4e75ff;
+}
+/* КНОПКА */
+button[data-start] {
+  width: 75px;
+  height: 40px;
+  border-radius: 8px;
+  padding: 8px 16px;
+  background: #4e75ff;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 32px;
+}
+
+button[data-start]:hover:not(:disabled) {
+  background: #6c8cff;
+}
+
+button[data-start]:disabled {
+  background: #cfcfcf;
+  cursor: not-allowed;
+}
+
+/* ВИВІД ТАЙМЕРА */
+.timer {
+  display: flex;
+  width: 346px;
+  height: 72px;
+  font-size: 40px;
+  justify-content: center;
+  gap: 24px;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.timer__item {
+  text-align: center;
+  position: relative;
+}
+
+.label {
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.timer__item::before {
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  font-size: 14px;
+  color: #000;
+}
+
+/* Flatpickr календар */
+.flatpickr-calendar {
+  border-radius: 8px;
+  padding: 16px;
+  width: 280px;
+  height: 352px;
+  background: #f5f5f5;
+}
+
+/* Вікно помилки */
+.error-toast {
+  border-bottom: 2px solid #ffbebe;
+  border-radius: 4px;
+  padding: 20px;
+  width: 302px;
+  height: 64px;
+  background: #ef4040;
+  color: #fff;
+}
